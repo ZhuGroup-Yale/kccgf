@@ -3,7 +3,7 @@ kccgf
 
 Periodic coupled cluster Green's function for realistic solids
 
-Authors: Tianyu Zhu (tianyu.zhu@yale.edu)
+Authors: Tianyu Zhu (tianyu.zhu@yale.edu), Katelyn Laughon, Jason M. Yu
 
 Installation
 ------------
