@@ -29,13 +29,13 @@ def run_ccgf(orb, kpt_idx):
     kpts = cell.make_kpts([2,2,2])
     gdf = df.GDF(cell, kpts)
     # TZ NOTE: change this to your own gdf path
-    gdf_fname = '../HF/gdf_ints_222.h5'
+    gdf_fname = '../../HF/gdf_ints_222.h5'
     gdf._cderi_to_save = gdf_fname
     if not os.path.isfile(gdf_fname):
         gdf.build()
 
     # TZ NOTE: change this to your own kmf chkfile path
-    chkfname = '../HF/si_222.chk'
+    chkfname = '../../HF/si_222.chk'
     if os.path.isfile(chkfname):
         kmf = scf.KRHF(cell, kpts).density_fit()
         kmf.exxdiv = 'ewald'
@@ -53,7 +53,7 @@ def run_ccgf(orb, kpt_idx):
         kmf.kernel()
 
     # TZ NOTE: change this to your own CCSD tmpfile folder
-    filepath = '../CCSD/'
+    filepath = '../../CCSD/'
     # KCCSD
     mycc = cc.KRCCSD(kmf)
     mycc.conv_tol = 1e-8
