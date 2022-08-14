@@ -1,0 +1,21 @@
+#!/bin/bash
+#SBATCH --partition=day
+#SBATCH --out="si_gw.out"
+#SBATCH --time=01-00:00:00
+#SBATCH --nodes=2
+#SBATCH --ntasks=4
+#SBATCH --ntasks-per-node=2
+#SBATCH --cpus-per-task=8
+#SBATCH --mem-per-cpu=2G
+
+mem_bytes=$(</sys/fs/cgroup/memory/slurm/uid_${SLURM_JOB_UID}/job_${SLURM_JOB_ID}/memory.limit_in_bytes)
+mem_gbytes=$(( $mem_bytes / 1024 **3 ))
+
+echo "Starting at $(date)"
+echo "Job submitted to the ${SLURM_JOB_PARTITION} partition, the default partition on ${SLURM_CLUSTER_NAME}"
+echo "Job ID: ${SLURM_JOB_ID}"
+echo "  I have ${SLURM_CPUS_ON_NODE} CPUs and ${mem_gbytes}GiB of RAM on compute node $(hostname)"
+srun hostname
+
+export OMP_NUM_THREADS=$SLURM_CPUS_PER_TASK
+mpirun -np 4 --bind-to none python -u si_gw.py
