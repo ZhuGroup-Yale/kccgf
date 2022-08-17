@@ -49,3 +49,8 @@ To run a MOR-CCGF+MOR (active-space self-energy correction), follow these steps:
    GW self-energy from Step 2 and 3 to save time. See example:
    `/kccgf/examples/silicon/MOR-CCGF+GW/CAS-CCGF+GW/si_cc_gw.py`. Use `submit.sh` to submit batch jobs and
    `si_gather_gf.py` to collect GF and DOS.
+
+References
+----------
+
+* K. Laughon, J. M. Yu, and T. Zhu, arXiv:2208.07478
